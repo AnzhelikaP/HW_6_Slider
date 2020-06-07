@@ -1,4 +1,4 @@
-
+//
 //  ViewController.swift
 //  HomeWork_2_2_1_Slider
 //
@@ -6,7 +6,7 @@
 //  Copyright © 2020 Anzhelika. All rights reserved.
 //
 
-import UIKit
+/*import UIKit
 
 protocol SetupViewControllerDelegate {
     func colorViewStart(red: Double, green: Double, blue: Double)
@@ -40,8 +40,8 @@ class SetupViewController: UIViewController {
         super.viewDidLoad()
         
         // важно для работы с протоколом текстовых полей!
-        textFieldRed.delegate = self
-        textFieldGreen.delegate = self
+        //textFieldRed.delegate = self
+        //textFieldGreen.delegate = self
         textFieldBlue.delegate = self
         
         colorView.layer.cornerRadius = 20
@@ -111,46 +111,15 @@ extension SetupViewController: UITextFieldDelegate {
         view.endEditing(true)
     }
     
-    // MARK: - скрытие клавиатуры и переход на другой экран по кнопке: return (done)
+    // MARK: - скрытие клавиатуры по кнопке: done
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        let redSlider = sliderRed.value
-        let greenSlider = sliderGreen.value
-        let blueSlider = sliderBlue.value
-        sliderRed.value = Float(textFieldRed.text ?? "") ?? redSlider
-        sliderGreen.value = Float(textFieldGreen.text ?? "") ?? greenSlider
-        sliderBlue.value = Float(textFieldBlue.text ?? "") ?? blueSlider
         doneButtonPressed()
         return true
     }
     
-    // MARK: - редактирование полейб перемещая курсор мышкойб и изменение всех параметров, которые есть на экране
-    
+    // MARK: - исполнение перехода на 1 экран после окончания редактирования последнего поля
     func textFieldDidEndEditing(_ textField: UITextField) {
-        let redSlider = sliderRed.value
-        let greenSlider = sliderGreen.value
-        let blueSlider = sliderBlue.value
-        
-        if textField == textFieldRed {
-            sliderRed.value = Float(textFieldRed.text ?? "") ?? redSlider
-            redValue.text = String(format: "%.2f", sliderRed.value)
-            colorShift()
-            //textFieldGreen.becomeFirstResponder()
-            
-            
-        } else if textField == textFieldGreen {
-            sliderGreen.value = Float(textFieldGreen.text ?? "") ?? greenSlider
-            greenValue.text = String(format: "%.2f", sliderGreen.value)
-            colorShift()
-            //textFieldBlue.becomeFirstResponder()
-            
-            
-        } else if textField == textFieldBlue {
-            sliderBlue.value = Float(textFieldBlue.text ?? "") ?? blueSlider
-            blueValue.text = String(format: "%.2f", sliderBlue.value)
-            colorShift()
-            //textFieldRed.becomeFirstResponder()
-            
-        }
-        textField.resignFirstResponder()
+        doneButtonPressed()
     }
 }
+*/
