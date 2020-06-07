@@ -8,9 +8,12 @@
 
 import UIKit
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+protocol SetupViewControllerDelegate {
+    func colorViewStart(red: Double, green: Double, blue: Double)
+}
 
 class SetupViewController: UIViewController {
+    
     
     @IBOutlet var colorView: UIView!
     
@@ -22,7 +25,10 @@ class SetupViewController: UIViewController {
     @IBOutlet var sliderGreen: UISlider!
     @IBOutlet var sliderBlue: UISlider!
     
-    override func viewDidLoad() {
+    var delegate: SetupViewControllerDelegate!
+    
+    
+        override func viewDidLoad() {
         super.viewDidLoad()
         
         colorView.layer.cornerRadius = 20
@@ -49,10 +55,18 @@ class SetupViewController: UIViewController {
     
     // One action for three sliders
     
-    @IBAction func SliderColor(_ sender: Any) {
+    @IBAction func sliderColor(_ sender: UISlider) {
         colorShift()
         
     }
     
+    @IBAction func doneButtonPressed(_ sender: UIButton) {
+        let valueRed = sliderRed.value
+        let valueGreen = sliderGreen.value
+        let valueBlue = sliderBlue.value
+        delegate.colorViewStart(red: Double(valueRed), green: Double(valueGreen), blue: Double(valueBlue))
+        dismiss(animated: true)
+    }
+   
 }
 
