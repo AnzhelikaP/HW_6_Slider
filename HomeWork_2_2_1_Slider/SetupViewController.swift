@@ -119,7 +119,8 @@ extension SetupViewController: UITextFieldDelegate {
         sliderRed.value = Float(textFieldRed.text ?? "") ?? redSlider
         sliderGreen.value = Float(textFieldGreen.text ?? "") ?? greenSlider
         sliderBlue.value = Float(textFieldBlue.text ?? "") ?? blueSlider
-        doneButtonPressed()
+        textField.resignFirstResponder()
+        //doneButtonPressed()
         return true
     }
     
