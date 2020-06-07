@@ -55,9 +55,9 @@ class SetupViewController: UIViewController {
     
     // One action for three sliders
     
-    @IBAction func sliderColor(_ sender: UISlider) {
-        colorShift()
-        
+    @IBAction func SliderColor(_ sender: Any) {
+            colorShift()
+            
     }
     
     @IBAction func doneButtonPressed(_ sender: UIButton) {
