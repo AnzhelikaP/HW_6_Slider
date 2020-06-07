@@ -12,6 +12,8 @@ protocol SetupViewControllerDelegate {
     func colorViewStart(red: Double, green: Double, blue: Double)
 }
 
+
+
 class SetupViewController: UIViewController {
     
     
@@ -25,17 +27,29 @@ class SetupViewController: UIViewController {
     @IBOutlet var sliderGreen: UISlider!
     @IBOutlet var sliderBlue: UISlider!
     
+    @IBOutlet var textFieldRed: UITextField!
+    @IBOutlet var textFieldGreen: UITextField!
+    @IBOutlet var textFieldBlue: UITextField!
+    
     var delegate: SetupViewControllerDelegate!
     
+    var redStart: Double = 0.0
+    var greenStart: Double = 0.0
+    var blueStart: Double = 0.0
+    var newColorView: UIView!
     
         override func viewDidLoad() {
         super.viewDidLoad()
+            
+         
         
         colorView.layer.cornerRadius = 20
         
-        colorShift()
         colorValue()
+        colorShift()
         
+        colorValueStart()
+            
     }
     
     // Dyeing a View
@@ -51,6 +65,24 @@ class SetupViewController: UIViewController {
         redValue.text = String(format: "%.2f", sliderRed.value)
         greenValue.text = String(format: "%.2f", sliderGreen.value)
         blueValue.text = String(format: "%.2f", sliderBlue.value)
+        sliderRed.value = Float(redStart)
+        sliderGreen.value = Float(greenStart)
+        sliderBlue.value = Float(blueStart)
+        
+    }
+    
+
+    
+    func colorValueStart() {
+    redValue.text = String(format: "%.2f", sliderRed.value)
+    greenValue.text = String(format: "%.2f", sliderGreen.value)
+    blueValue.text = String(format: "%.2f", sliderBlue.value)
+    textFieldRed.text = String(format: "%.2f", sliderRed.value)
+    textFieldGreen.text = String(format: "%.2f", sliderGreen.value)
+    textFieldBlue.text = String(format: "%.2f", sliderBlue.value)
+    sliderRed.value = Float(sliderRed.value)
+    sliderGreen.value = Float(sliderGreen.value)
+    sliderBlue.value = Float(sliderBlue.value)
     }
     
     // One action for three sliders
@@ -58,6 +90,8 @@ class SetupViewController: UIViewController {
     @IBAction func SliderColor(_ sender: Any) {
             colorShift()
             
+            colorValueStart()
+        
     }
     
     @IBAction func doneButtonPressed(_ sender: UIButton) {
